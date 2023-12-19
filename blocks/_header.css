@@ -30,7 +30,11 @@ header button {
     
 
 }
-
+header img {
+    height: 20vh;
+    width: fit-content;
+    
+}
 header button:hover {
     width: 16vh;
     height: 6vh;

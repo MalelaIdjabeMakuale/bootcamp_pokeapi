@@ -91,7 +91,8 @@ const drawPokemon = (pokemon) => {
     });
 
     const type = poke.types[0].type.name;
-    console.log(type); //BUSCAR PARA QUE ME SALGAN LOS DOS TIPOS Y NO SÓLO UNO
+    console.log(type)
+    // console.log(type); //BUSCAR PARA QUE ME SALGAN LOS DOS TIPOS Y NO SÓLO UNO
     div.style.border = "2px solid";
     div.style.borderRadius = "5vh";
     div.style.borderColor = typeColors[type];
@@ -136,62 +137,15 @@ const paintFilter = (pokemon) => {
   input$$.addEventListener("input", () => filterPokemon(pokemon));
   document.body.appendChild(input$$);
 }
-// //  BOTONES DE FILTRAR 
-// function filterPokemonByID(buttonID) {
-//   const pokemonCards = document.querySelectorAll('.pokemon-card');
-//   const filteredPokemonCards = [];
 
-//   for (const pokemonCard of pokemonCards) {
-//     const typeButton = pokemonCard.querySelector('button');
-//     if (typeButton && typeButton.id === buttonID) {
-//       filteredPokemonCards.push(pokemonCard);
-//     }
-//   }
-
-//   // Clear the HTML content before drawing the filtered Pokémon.
-//   pokemonList.innerHTML = '';
-//   drawPokemon(filteredPokemonCards);
-// }
+// const FirePokemon = (pokemon) => {
+//   const filteredPokemonFire = pokemon.filter((poke) => poke.types[0].type.name.includes(`fire`));
+//   return filteredPokemonFire;
+// };
+// console.log(FirePokemon)
 
 
-
-
-// const normalButton = document.querySelector('#normal');
-// normalButton.addEventListener('click', filterPokemonByID('normal'));
-// console.log(normalButton)
-
-// const fireButton = document.querySelector('#fire');
-// fireButton.addEventListener('click', filterPokemonByID('fire'));
-
-// const waterButton = document.querySelector('#water');
-// waterButton.addEventListener('click', filterPokemonByID('water'));
-
-// const grassButton = document.querySelector('#grass');
-// grassButton.addEventListener('click', filterPokemonByID('grass'));
-
-// const electricButton = document.querySelector('#electric');
-// electricButton.addEventListener('click', filterPokemonByID('electric'));
-
-// const psychicButton = document.querySelector('#psychic');
-// psychicButton.addEventListener('click', filterPokemonByID('psychic'));
-
-// const bugButton = document.querySelector('#bug');
-// bugButton.addEventListener('click', filterPokemonByID('bug'));
-
-// const rockButton = document.querySelector('#rock');
-// rockButton.addEventListener('click', filterPokemonByID('rock'));
-
-// const ghostButton = document.querySelector('#ghost');
-// ghostButton.addEventListener('click', filterPokemonByID('ghost'));
-
-// const dragonButton = document.querySelector('#dragon');
-// dragonButton.addEventListener('click', filterPokemonByID('dragon'));
-
-// const darkButton = document.querySelector('#dark');
-// darkButton.addEventListener('click', filterPokemonByID('dark'));
-
-// const fairyButton = document.querySelector('#fairy');
-// fairyButton.addEventListener('click', filterPokemonByID('fairy'));
+// const type = poke.types[0].type.name;
 
 //  1. Init sirve de hoja de ruta. Se van poniendo las funciones que van a ser llamadas para que se ejecuten.
 //  2. Init llama a la función Init y arranca todo.(?)
