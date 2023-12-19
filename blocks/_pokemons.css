@@ -5,10 +5,7 @@
     margin-left: 5vh;
     
 }
-input {margin-bottom: 3vh;
-    font-size: 6px;
 
-}
 .pokemon-card{
     border: dashed;
     border-width: 1px;
@@ -29,10 +26,12 @@ input {margin-bottom: 3vh;
         transition: all 0,5s ease 0s;
         border: none;
     border-radius: 5vh;
-    height: 250px;
+    height: 210px;
     padding: 3vh;
-    /* border-width: 4px;
-    border-color: #ff0000;      */
+    margin: 1vh;
+    cursor: pointer;
+   
+   
 }
 
 .pokemon h4{text-transform: uppercase;
@@ -54,6 +53,5 @@ input {margin-bottom: 3vh;
 }
 
 .pokemon p { font-size: 12px;}
-
 
 
