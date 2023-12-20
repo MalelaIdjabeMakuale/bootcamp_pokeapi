@@ -145,36 +145,29 @@ const paintFilter = (pokemon) => {
   document.body.appendChild(input$$);
 };
 
-///////
 const filterPokemonByType = (type, pokemon) => {
   const filteredPokemon = pokemon.filter((poke) => poke.types[0].type.name === type);
-  drawPokemon(filteredPokemon);
-  console.log (filterPokemonByType)
+  return filteredPokemon;
 };
 
-// const filterPokemon = (type, pokemon) => {
-//   const input$$ = document.querySelector("input");
-//   const filteredPokemon = pokemon.filter((poke) =>
-//     (poke.types[0].type.name === type &&
-//       poke.name.toLowerCase().includes(input$$.value.toLowerCase()))
-//   );
-//   drawPokemon(filteredPokemon);
-// };
+const paintFilterWater = (pokemon) => {
+  const waterButton = document.querySelector("#water");
 
-// const paintFilter = (pokemon) => {
-//   let input$$ = document.createElement("input");
-//   input$$.setAttribute("type", "text");
-//   input$$.setAttribute("placeholder", "Search by name");
-//   input$$.addEventListener("input", () => filterPokemon("normal", pokemon));
-//   document.body.appendChild(input$$);
-// };
+  waterButton.addEventListener("click", () => {
+    const filteredPokemon = filterPokemonByType("water", pokemon);
+    drawPokemon(filteredPokemon);
+  });
+};
 
 
+const paintFilterFire = (pokemon) => {
+  const fireButton = document.querySelector("#fire");
 
-
-////////
-
-
+  fireButton.addEventListener("click", () => {
+    const filteredPokemon = filterPokemonByType("fire", pokemon);
+    drawPokemon(filteredPokemon);
+  });
+};
 
 
 // const FirePokemon = (pokemon) => {
@@ -201,6 +194,8 @@ const init = async () => {
   const pokemon = await getPokemon();
   console.log(pokemon);
   paintFilter(pokemon);
+  paintFilterWater(pokemon);
+  paintFilterFire(pokemon);
 
   const div$$ = document.createElement("div");
   div$$.classList.add("pokemon");
