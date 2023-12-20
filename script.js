@@ -1,4 +1,4 @@
-// USAR INNER HTML 
+// USAR INNER HTML
 // ¿?Poner pantalla de carga para esperar ¿?
 // La función init es el guion de las funciones .Pone el orden por el cual se ejecutan las funciones
 
@@ -8,9 +8,8 @@
 //hacer que los botones del nav sirvan como busqueda (filter, map?)
 //
 
-
-// Array vacío y lo voy llenando con los pokemons que extraigo del bucle for. Añado i al hacer fetch porque así . 
-// La función es asíncrona para que no mande una petición hasta que esté resuelta la anterior. 
+// Array vacío y lo voy llenando con los pokemons que extraigo del bucle for. Añado i al hacer fetch porque así .
+// La función es asíncrona para que no mande una petición hasta que esté resuelta la anterior.
 //Try y Catch devuelven el resultado o un error al hacer la función y return devuelve el Array de pokemons lleno en forma de objeto (json)
 
 const getPokemon = async (id) => {
@@ -35,14 +34,13 @@ const getPokemon = async (id) => {
 //PINTAR LOS POKEMON, DIV Y ESTRUCTURA GENERAL
 //DRAW POKEMON define una función con un argumento llamado pokemon y añade los elementos al HTML para cada pokemon (h4, p, botón y lo que surja)
 // INNER HTML crea un HTML desde Javascript
-// El BUCLE FOR (poke of pokemon va completando todo en cada vuelta hasta 150) sirve para crear la misma estructura en todos los pokemons de la lista. 
-//APPENDCHILD sirve para colocarlo en el lugar que quieras, en el bucle for añado un EVENT LISTENER para que cambie la foto con el mouse over, mouse out. También añado un EVENT LISTENER 
+// El BUCLE FOR (poke of pokemon va completando todo en cada vuelta hasta 150) sirve para crear la misma estructura en todos los pokemons de la lista.
+//APPENDCHILD sirve para colocarlo en el lugar que quieras, en el bucle for añado un EVENT LISTENER para que cambie la foto con el mouse over, mouse out. También añado un EVENT LISTENER
 //Creo la constante typeColors para que a cada ID le corresponda un color. En el mouseover le meto el color de fondo cuando está encima el ratón. y en el botón del tipo también se lo meto.
 
 const drawPokemon = (pokemon) => {
   const div$$ = document.querySelector(".pokemon");
   div$$.innerHTML = "";
-
 
   for (const poke of pokemon) {
     const div = document.createElement("div");
@@ -54,33 +52,28 @@ const drawPokemon = (pokemon) => {
     const typeBtn = document.createElement("button");
 
     const typeColors = {
-        normal: '#A8A877',
-        fighting: '#c52020',
-        flying: '#b02890',
-        poison: '#97269f',
-        ground: '#E0C068',
-        rock: '#757538',
-        bug: '#507f54',
-        ghost: '#af96c1',
-        steel: '#a6a68',
-        fire: '#db661e',
-        water: '#2880d3',
-        grass: '#178e66',
-        electric: '#a9b11b',
-        psychic: '#e888dd',
-        ice: '#82e0ee',
-        dragon: '#8508d2',
-        dark: '#705848',
-        fairy: '#ce92c2',
-       };
+      normal: "#A8A877",
+      fighting: "#c52020",
+      flying: "#b02890",
+      poison: "#97269f",
+      ground: "#E0C068",
+      rock: "#757538",
+      bug: "#507f54",
+      ghost: "#af96c1",
+      steel: "#a6a68",
+      fire: "#db661e",
+      water: "#2880d3",
+      grass: "#178e66",
+      electric: "#a9b11b",
+      psychic: "#e888dd",
+      ice: "#82e0ee",
+      dragon: "#8508d2",
+      dark: "#705848",
+      fairy: "#ce92c2",
+    };
 
-      
-
-       
     img.setAttribute("src", poke.sprites.back_shiny);
     img.setAttribute("alt", poke.name);
-
-
 
     img.addEventListener("mouseover", () => {
       img.src = poke.sprites.front_default;
@@ -90,43 +83,37 @@ const drawPokemon = (pokemon) => {
       typeBtn.style.filter = "grayscale(0%)";
       pHeight.style.color = "black";
       pWeight.style.color = "black";
-
-  
     });
 
     img.addEventListener("mouseout", () => {
       img.src = poke.sprites.back_shiny;
       img.style.backgroundColor = "#ffffff";
-      
+
       div.style.borderColor = "gray";
       div.style.border = "2px solid";
       pHeight.style.color = "gray";
       pWeight.style.color = "gray";
-    
-typeBtn.style.filter = "grayscale(50%)";
 
-    
+      typeBtn.style.filter = "grayscale(60%)";
     });
 
     const type = poke.types[0].type.name;
-    console.log(type)
+    console.log(type);
     // console.log(type); //BUSCAR PARA QUE ME SALGAN LOS DOS TIPOS Y NO SÓLO UNO
 
     //Hacer que los bordes del div sean del color del tipo de pokemon.
-    
+
     div.style.borderRadius = "5vh";
     div.style.border = "2px solid";
-    
-  
-    pHeight.textContent = `Height: ${poke.height} m`;
+
+    pHeight.textContent = `Height: ${poke.height/10} m`;
     pHeight.style.color = "gray";
-    pWeight.textContent = `Weight: ${poke.weight} kg`;
+    pWeight.textContent = `Weight: ${poke.weight/10} kg`;
     pWeight.style.color = "gray";
     typeBtn.textContent = `${type}`;
     h4.textContent = poke.name;
     typeBtn.style.backgroundColor = typeColors[type];
-    typeBtn.style.filter = "grayscale(50%)";
-    
+    typeBtn.style.filter = "grayscale(60%)";
 
     div.appendChild(h4);
     div.appendChild(img);
@@ -136,8 +123,6 @@ typeBtn.style.filter = "grayscale(50%)";
 
     div$$.appendChild(div);
   }
-
-  
 };
 
 // HERRAMIENTAS PARA FILTRAR LOS POKEMONS
@@ -152,21 +137,51 @@ const filterPokemon = (pokemon) => {
   drawPokemon(filteredPokemon);
 };
 
-
 const paintFilter = (pokemon) => {
   let input$$ = document.createElement("input");
   input$$.setAttribute("type", "text");
   input$$.setAttribute("placeholder", "Search by name");
   input$$.addEventListener("input", () => filterPokemon(pokemon));
   document.body.appendChild(input$$);
-}
+};
+
+///////
+const filterPokemonByType = (type, pokemon) => {
+  const filteredPokemon = pokemon.filter((poke) => poke.types[0].type.name === type);
+  drawPokemon(filteredPokemon);
+  console.log (filterPokemonByType)
+};
+
+// const filterPokemon = (type, pokemon) => {
+//   const input$$ = document.querySelector("input");
+//   const filteredPokemon = pokemon.filter((poke) =>
+//     (poke.types[0].type.name === type &&
+//       poke.name.toLowerCase().includes(input$$.value.toLowerCase()))
+//   );
+//   drawPokemon(filteredPokemon);
+// };
+
+// const paintFilter = (pokemon) => {
+//   let input$$ = document.createElement("input");
+//   input$$.setAttribute("type", "text");
+//   input$$.setAttribute("placeholder", "Search by name");
+//   input$$.addEventListener("input", () => filterPokemon("normal", pokemon));
+//   document.body.appendChild(input$$);
+// };
+
+
+
+
+////////
+
+
+
 
 // const FirePokemon = (pokemon) => {
 //   const filteredPokemonFire = pokemon.filter((poke) => poke.types[0].type.name.includes(`fire`));
 //   return filteredPokemonFire;
 // };
 // console.log(FirePokemon)
-
 
 // const type = poke.types[0].type.name;
 
@@ -177,17 +192,15 @@ const init = async () => {
   // loadingDiv.classList.add('loading');
   // loadingDiv.innerHTML = `<img src="./utils/img/loading_gif.gif" />`;
   // document.body.appendChild(loadingDiv);
-  
+
   // const timer = setTimeout(() => {
   //   loadingDiv.remove();
-  
+
   //   }, 18000);
-  
+
   const pokemon = await getPokemon();
   console.log(pokemon);
   paintFilter(pokemon);
-
-
 
   const div$$ = document.createElement("div");
   div$$.classList.add("pokemon");
@@ -196,4 +209,3 @@ const init = async () => {
 };
 
 init();
-
