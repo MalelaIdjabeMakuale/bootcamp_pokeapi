@@ -80,29 +80,52 @@ const drawPokemon = (pokemon) => {
     img.setAttribute("src", poke.sprites.back_shiny);
     img.setAttribute("alt", poke.name);
 
+
+
     img.addEventListener("mouseover", () => {
       img.src = poke.sprites.front_default;
-      img.style.backgroundColor = typeColors[type];
+      // img.style.backgroundColor = typeColors[type];
+      div.style.borderColor = typeColors[type];
+      div.style.borderWidth = "6px";
+      typeBtn.style.filter = "grayscale(0%)";
+      pHeight.style.color = "black";
+      pWeight.style.color = "black";
+
+  
     });
 
     img.addEventListener("mouseout", () => {
       img.src = poke.sprites.back_shiny;
-      img.style.backgroundColor = "#e9e7e7";
+      img.style.backgroundColor = "#ffffff";
+      
+      div.style.borderColor = "gray";
+      div.style.border = "2px solid";
+      pHeight.style.color = "gray";
+      pWeight.style.color = "gray";
+    
+typeBtn.style.filter = "grayscale(50%)";
+
+    
     });
 
     const type = poke.types[0].type.name;
     console.log(type)
     // console.log(type); //BUSCAR PARA QUE ME SALGAN LOS DOS TIPOS Y NO SÓLO UNO
-    div.style.border = "2px solid";
+
+    //Hacer que los bordes del div sean del color del tipo de pokemon.
+    
     div.style.borderRadius = "5vh";
-    div.style.borderColor = typeColors[type];
-
-    h4.textContent = poke.name;
+    div.style.border = "2px solid";
+    
+  
     pHeight.textContent = `Height: ${poke.height} m`;
+    pHeight.style.color = "gray";
     pWeight.textContent = `Weight: ${poke.weight} kg`;
+    pWeight.style.color = "gray";
     typeBtn.textContent = `${type}`;
-
+    h4.textContent = poke.name;
     typeBtn.style.backgroundColor = typeColors[type];
+    typeBtn.style.filter = "grayscale(50%)";
     
 
     div.appendChild(h4);
@@ -148,11 +171,24 @@ const paintFilter = (pokemon) => {
 // const type = poke.types[0].type.name;
 
 //  1. Init sirve de hoja de ruta. Se van poniendo las funciones que van a ser llamadas para que se ejecuten.
-//  2. Init llama a la función Init y arranca todo.(?)
+//  2. Init llama a la función Init y arranca todo.(?) Intentar poner la
 const init = async () => {
+  // const loadingDiv = document.createElement('div');
+  // loadingDiv.classList.add('loading');
+  // loadingDiv.innerHTML = `<img src="./utils/img/loading_gif.gif" />`;
+  // document.body.appendChild(loadingDiv);
+  
+  // const timer = setTimeout(() => {
+  //   loadingDiv.remove();
+  
+  //   }, 18000);
+  
   const pokemon = await getPokemon();
   console.log(pokemon);
   paintFilter(pokemon);
+
+
+
   const div$$ = document.createElement("div");
   div$$.classList.add("pokemon");
   document.body.appendChild(div$$);
@@ -160,3 +196,4 @@ const init = async () => {
 };
 
 init();
+

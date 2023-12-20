@@ -20,19 +20,21 @@ header button {
     width: 15vh;
     margin: 2vh;
     border: none;
-    border-radius: 5vh;
+    border-radius: 50px;
+background: #e0e0e0;
+box-shadow: inset 26px 26px 52px #bebebe,
+            inset -26px -26px 52px #ffffff;
     color:#ffffff;
     text-transform: uppercase;
     font-size: 12px;
     font-weight: bold;
     transition: all 0.3s ease 0s;
-    cursor: hand;
     
 
 }
 header img {
-    height: 20vh;
-    width: fit-content;
+    height: 10vh;
+    justify-self: center;
     
 }
 header button:hover {
@@ -90,13 +92,25 @@ header .btn-header_steel {background-color: #a6a687;
 header .btn-header_fairy {background-color: #ce92c2;
 }
 
-input {margin-left: 7vh;
-    border-radius: 5vh;
+
+input {text-align: center;
+    margin-left: 7vh;
+    border: none;
+    outline: none;
     height: 3vh;
     width: 25vh;
- text-align: center;
- color: #808080;
- margin-bottom: 3vh;
+    margin-bottom: 3vh;
     font-size: 7px;
-
-}
+    border-radius: 15px;
+    padding: 1em;
+    background-color: #ccc;
+    box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+    transition: 300ms ease-in-out;
+  }
+  
+  input:focus {
+    background-color: white;
+    transform: scale(1.05);
+    box-shadow: 13px 13px 100px #969696,
+               -13px -13px 100px #ffffff;
+  }
