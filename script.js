@@ -106,9 +106,9 @@ const drawPokemon = (pokemon) => {
     div.style.borderRadius = "5vh";
     div.style.border = "2px solid";
 
-    pHeight.textContent = `Height: ${poke.height/10} m`;
+    pHeight.textContent = `Height: ${poke.height / 10} m`;
     pHeight.style.color = "gray";
-    pWeight.textContent = `Weight: ${poke.weight/10} kg`;
+    pWeight.textContent = `Weight: ${poke.weight / 10} kg`;
     pWeight.style.color = "gray";
     typeBtn.textContent = `${type}`;
     h4.textContent = poke.name;
@@ -146,8 +146,38 @@ const paintFilter = (pokemon) => {
 };
 
 const filterPokemonByType = (type, pokemon) => {
-  const filteredPokemon = pokemon.filter((poke) => poke.types[0].type.name === type);
+  const filteredPokemon = pokemon.filter(
+    (poke) => poke.types[0].type.name === type
+  );
   return filteredPokemon;
+};
+
+
+const paintFilterAll = (pokemon) => {
+  const allButton = document.querySelector("#all");
+
+  allButton.addEventListener("click", () => {
+    const filteredPokemon = pokemon; 
+    drawPokemon(filteredPokemon);
+  });
+};
+
+const paintFilterNormal = (pokemon) => {
+  const normalButton = document.querySelector("#normal");
+
+  normalButton.addEventListener("click", () => {
+    const filteredPokemon = filterPokemonByType("normal", pokemon);
+    drawPokemon(filteredPokemon);
+  });
+};
+
+const paintFilterFire = (pokemon) => {
+  const fireButton = document.querySelector("#fire");
+
+  fireButton.addEventListener("click", () => {
+    const filteredPokemon = filterPokemonByType("fire", pokemon);
+    drawPokemon(filteredPokemon);
+  });
 };
 
 const paintFilterWater = (pokemon) => {
@@ -159,16 +189,131 @@ const paintFilterWater = (pokemon) => {
   });
 };
 
+const paintFilterElectric = (pokemon) => {
+  const electricButton = document.querySelector("#electric");
 
-const paintFilterFire = (pokemon) => {
-  const fireButton = document.querySelector("#fire");
-
-  fireButton.addEventListener("click", () => {
-    const filteredPokemon = filterPokemonByType("fire", pokemon);
+  electricButton.addEventListener("click", () => {
+    const filteredPokemon = filterPokemonByType("electric", pokemon);
     drawPokemon(filteredPokemon);
   });
 };
 
+const paintFilterGrass = (pokemon) => {
+  const grassButton = document.querySelector("#grass");
+
+  grassButton.addEventListener("click", () => {
+    const filteredPokemon = filterPokemonByType("grass", pokemon);
+    drawPokemon(filteredPokemon);
+  });
+};
+
+const paintFilterIce = (pokemon) => {
+  const iceButton = document.querySelector("#ice");
+
+  iceButton.addEventListener("click", () => {
+    const filteredPokemon = filterPokemonByType("ice", pokemon);
+    drawPokemon(filteredPokemon);
+  });
+};
+
+const paintFilterFighting = (pokemon) => {
+  const fightingButton = document.querySelector("#fighting");
+
+  fightingButton.addEventListener("click", () => {
+    const filteredPokemon = filterPokemonByType("fighting", pokemon);
+    drawPokemon(filteredPokemon);
+  });
+};
+
+const paintFilterPoison = (pokemon) => {
+  const poisonButton = document.querySelector("#poison");
+
+  poisonButton.addEventListener("click", () => {
+    const filteredPokemon = filterPokemonByType("poison", pokemon);
+    drawPokemon(filteredPokemon);
+  });
+};
+
+const paintFilterGround = (pokemon) => {
+  const groundButton = document.querySelector("#ground");
+
+  groundButton.addEventListener("click", () => {
+    const filteredPokemon = filterPokemonByType("ground", pokemon);
+    drawPokemon(filteredPokemon);
+  });
+};
+
+const paintFilterFlying = (pokemon) => {
+  const flyingButton = document.querySelector("#flying");
+
+  flyingButton.addEventListener("click", () => {
+    const filteredPokemon = filterPokemonByType("flying", pokemon);
+    drawPokemon(filteredPokemon);
+  });
+};
+
+const paintFilterPsychic = (pokemon) => {
+  const psychicButton = document.querySelector("#psychic");
+
+  psychicButton.addEventListener("click", () => {
+    const filteredPokemon = filterPokemonByType("psychic", pokemon);
+    drawPokemon(filteredPokemon);
+  });
+};
+
+const paintFilterBug = (pokemon) => {
+  const bugButton = document.querySelector("#bug");
+
+  bugButton.addEventListener("click", () => {
+    const filteredPokemon = filterPokemonByType("bug", pokemon);
+    drawPokemon(filteredPokemon);
+  });
+};
+
+const paintFilterRock = (pokemon) => {
+  const rockButton = document.querySelector("#rock");
+
+  rockButton.addEventListener("click", () => {
+    const filteredPokemon = filterPokemonByType("rock", pokemon);
+    drawPokemon(filteredPokemon);
+  });
+};
+
+const paintFilterGhost = (pokemon) => {
+  const ghostButton = document.querySelector("#ghost");
+
+  ghostButton.addEventListener("click", () => {
+    const filteredPokemon = filterPokemonByType("ghost", pokemon);
+    drawPokemon(filteredPokemon);
+  });
+};
+
+const paintFilterDragon = (pokemon) => {
+  const dragonButton = document.querySelector("#dragon");
+
+  dragonButton.addEventListener("click", () => {
+    const filteredPokemon = filterPokemonByType("dragon", pokemon);
+    drawPokemon(filteredPokemon);
+  });
+};
+
+const paintFilterSteel = (pokemon) => {
+  const steelButton = document.querySelector("#steel");
+
+  steelButton.addEventListener("click", () => {
+    const filteredPokemon = filterPokemonByType("steel", pokemon);
+    drawPokemon(filteredPokemon);
+  });
+};
+
+const paintFilterFairy = (pokemon) => {
+  const fairyButton = document.querySelector("#fairy");
+
+  fairyButton.addEventListener("click", () => {
+    const filteredPokemon = filterPokemonByType("fairy", pokemon);
+    drawPokemon(filteredPokemon);
+  });
+};
 
 // const FirePokemon = (pokemon) => {
 //   const filteredPokemonFire = pokemon.filter((poke) => poke.types[0].type.name.includes(`fire`));
@@ -193,10 +338,27 @@ const init = async () => {
 
   const pokemon = await getPokemon();
   console.log(pokemon);
-  paintFilter(pokemon);
-  paintFilterWater(pokemon);
-  paintFilterFire(pokemon);
 
+  paintFilter(pokemon);
+  paintFilterAll(pokemon);
+  console.log(pokemon);
+  paintFilterNormal(pokemon);
+  paintFilterFire(pokemon);
+  paintFilterWater(pokemon);
+  paintFilterElectric(pokemon);
+  paintFilterGrass(pokemon);
+  paintFilterIce(pokemon);
+  paintFilterFighting(pokemon);
+  paintFilterPoison(pokemon);
+  paintFilterGround(pokemon);
+  paintFilterFlying(pokemon);
+  paintFilterPsychic(pokemon);
+  paintFilterBug(pokemon);
+  paintFilterRock(pokemon);
+  paintFilterGhost(pokemon);
+  paintFilterDragon(pokemon);
+  paintFilterSteel(pokemon);
+  paintFilterFairy(pokemon);
   const div$$ = document.createElement("div");
   div$$.classList.add("pokemon");
   document.body.appendChild(div$$);
@@ -204,3 +366,24 @@ const init = async () => {
 };
 
 init();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
